@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow 5 Ảnh</title>
+</head>
+<body>
+    <div class="slide-container">
+    <img id="slide" src="images/anh1.jpg" width="700" height="300">
+    <div class="page">
+        <span id="pageNumber">1/5</span>
+    </div>
+    <div class="buttons">
+        <button onclick="prevImage()">Previous</button>
+        <button onclick="nextImage()">Next</button>
+        <button onclick="startAuto()">Auto</button>
+        <button onclick="pauseAuto()">Pause</button>
+    </div>
+</div>
+
+    <!-- Nhúng file JavaScript -->
+    <script src="images.js"></script>
+</body>
+</html>

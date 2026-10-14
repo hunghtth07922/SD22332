@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bài 2: Đăng ký thành viên</h2>
+    <form onsubmmit="return validation()">
+        <div>
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" id="username" name="username" required>
+            <span class="error" id="nameError"></span>
+        </div>
+        <div class="row">
+            <button type="submit">Đăng ký</button>
+        </div>
+    </form>
+    <script>
+        function validation(){
+            //lay du lieu tu form
+            let name= document.getElementById("username").value.trim();
+            //Kiem tra du lieu co trong ko?
+            isValid= true;
+            if(name === ""){
+                isValid = false;
+                document.getElementById("nameError").innerText = "Tên đăng nhập không được để trống";
+            } 
+               if(isValid== true){
+                alert("Đăng ký thành công");
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>

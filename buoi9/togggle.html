@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu{
+            display: none;
+        }
+        .menu.show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnMenu">Mở menu</button>
+    <div id="menu" class="menu">
+        Trang chủ|Sản phẩm|Liên hệ
+    </div>
+    <script>
+        let btn=document.getElementById("btnMenu");
+        let menu=document.getElementById("menu");
+        btn.addEventListener("click", function(){
+            menu.classList.toggle("show");
+        });
+    </script>
+</body>
+</html>

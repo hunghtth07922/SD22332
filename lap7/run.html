@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Bài 1 – Hiện ẩn thông báo</title>
+    <style>
+        /* Khối thông báo */
+        #message {
+            width: 450px;
+            padding: 20px;
+            background-color: lightgreen;
+            color: darkgreen;
+            text-align: center;
+            font-size: 22px;
+            border-radius: 8px;
+            /* Ban đầu ẩn */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bài 1 - Hiệu ứng hiện / ẩn</h2>
+
+    <!-- Khối thông báo -->
+    <div id="message">
+        Chào mừng đến với website của chúng tôi
+    </div>
+
+    <script>
+        // Bước 1: Lấy khối thông báo
+        const message = document.getElementById("message");
+
+        // Bước 2: Sau 2 giây -> hiện thông báo
+        setTimeout(function() {
+            message.style.display = "block";
+        }, 2000);
+
+        // Bước 3: Sau 5 giây -> ẩn thông báo
+        setTimeout(function() {
+            message.style.display = "none";
+        }, 5000);
+    </script>
+
+    <h2>Bai 2</h2>
+    
+</body>
+</html>

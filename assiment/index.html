@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ăn Vặt ChoLiBi - Menu & Đặt Hàng</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">🍿 Ăn Vặt ChoLiBi</div>
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#products">Thực đơn</a>
+            <a href="#cart">Giỏ hàng (<span id="cart-count">0</span>)</a>
+            <a href="#contact">Liên hệ</a>
+            <span id="user-info">
+                <button class="btn-login" onclick="openAuthModal()">🔑 Đăng nhập / Đăng ký</button>
+            </span>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Banner Slider -->
+        <section class="banner-slider">
+            <div class="slide-container">
+                <img id="slider-img" src="https://picsum.photos/800/300?random=1" alt="Banner ChoLiBi">
+            </div>
+            <div class="slider-controls">
+                <button onclick="changeSlide(-1)">❮ Trước</button>
+                <button onclick="changeSlide(1)">Sau ❯</button>
+            </div>
+        </section>
+
+        <!-- Flash Sale -->
+        <section class="flash-sale">
+            <h2>⚡ FLASH SALE - Giảm 20% Kết Thúc Sau: <span id="timer">02:00:00</span></h2>
+        </section>
+
+        <!-- Danh mục & Tìm kiếm sản phẩm -->
+        <main id="products">
+            <h2>Thực Đơn Món Ngon</h2>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="🔍 Tìm món ăn (ví dụ: trà chanh, lạp xưởng...)" oninput="searchProducts()">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="btn-filter active" onclick="renderProducts('all', this)">Tất cả</button>
+                <button class="btn-filter" onclick="renderProducts('hot', this)">🔥 Món Hot</button>
+                <button class="btn-filter" onclick="renderProducts('new', this)">✨ Món Mới</button>
+                <button class="btn-filter" onclick="renderProducts('sale', this)">🏷️ Khuyến Mãi</button>
+            </div>
+            <div id="product-list" class="product-grid"></div>
+        </main>
+
+        <!-- Giỏ hàng -->
+        <section id="cart" class="card-box">
+            <h2>🛒 Giỏ Hàng Của Bạn</h2>
+            <div id="cart-items">
+                <p class="empty-msg">Giỏ hàng đang trống.</p>
+            </div>
+            <div class="cart-total">
+                <strong>Tổng tiền: <span id="cart-total">0</span> VNĐ</strong>
+            </div>
+        </section>
+
+        <!-- Form Đặt Hàng -->
+        <section id="contact" class="card-box">
+            <h2>📝 Thông Tin Giao Hàng</h2>
+            <form id="contact-form" onsubmit="return validateForm(event)">
+                <div class="form-group">
+                    <label>Họ và tên người nhận:</label>
+                    <input type="text" id="fullname" placeholder="Nhập họ tên...">
+                    <small class="error" id="err-fullname"></small>
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại / Email:</label>
+                    <input type="text" id="email" placeholder="Nhập SĐT hoặc Email...">
+                    <small class="error" id="err-email"></small>
+                </div>
+                <button type="submit" class="btn-submit">Đặt Hàng Ngay</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- MODAL ĐĂNG NHẬP / ĐĂNG KÝ -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            
+            <!-- Tab chuyển đổi -->
+            <div class="auth-tabs">
+                <button id="tab-login-btn" class="tab-btn active" onclick="switchTab('login')">Đăng Nhập</button>
+                <button id="tab-register-btn" class="tab-btn" onclick="switchTab('register')">Đăng Ký</button>
+            </div>
+
+            <!-- Form Đăng Nhập -->
+            <form id="login-form" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label>Tên tài khoản:</label>
+                    <input type="text" id="login-username" placeholder="Nhập tên tài khoản..." required>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    <input type="password" id="login-password" placeholder="Nhập mật khẩu..." required>
+                </div>
+                <small class="error" id="err-login"></small>
+                <button type="submit" class="btn-submit" style="margin-top: 15px;">Đăng Nhập</button>
+            </form>
+
+            <!-- Form Đăng Ký -->
+            <form id="register-form" onsubmit="return handleRegister(event)" style="display: none;">
+                <div class="form-group">
+                    <label>Tên tài khoản mới:</label>
+                    <input type="text" id="reg-username" placeholder="Tạo tên tài khoản..." required>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu:</label>
+                    <input type="password" id="reg-password" placeholder="Tạo mật khẩu..." required>
+                </div>
+                <div class="form-group">
+                    <label>Xác nhận mật khẩu:</label>
+                    <input type="password" id="reg-confirm-password" placeholder="Nhập lại mật khẩu..." required>
+                </div>
+                <small class="error" id="err-register"></small>
+                <button type="submit" class="btn-submit" style="margin-top: 15px;">Tạo Tài Khoản</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

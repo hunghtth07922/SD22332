@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 220px;
+            padding: 20px;
+            background-color: lightcyan;
+            color: #000;
+            text-align: center;
+        }
+        .active{
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">Xin Chào</div>
+    <button onclick="changeStage()">Đổi Trạng Thái</button>
+    <script>
+        function changeStage(){
+            let box=document.getElementById("box");
+            box.classList.add("active");
+        }
+    </script>
+
+    
+</body>
+</html>
